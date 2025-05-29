@@ -11,8 +11,12 @@ SearchButton.addEventListener('click', (event) => {
     event.preventDefault()
      GetData(SearchBar.value).then((res) => {
         console.log(res)
-        DOM.MainSection(res.address, format(new Date(), 'EEEE'),res.currentConditions.feelslike)
-    })
+        DOM.MainSection(res.address, format(new Date(), 'EEEE'),res.currentConditions.icon,res.currentConditions.feelslike)
+        for(let i=1;i<=6;i++) {
+            let array=res.days[i]
+            DOM.WeekDOM(array.icon,array.datetime,array.feelslike,i)
+        }
+    }).catch((error)=>alert(error))
 })
 
 

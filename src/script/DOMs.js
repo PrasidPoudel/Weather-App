@@ -18,22 +18,27 @@ const DOM = (function () {
         const City = document.querySelector('.city-name'); // City Info is here
         const day = document.querySelector('.day'); // Day Info is here
         const emoji = document.querySelector('.emoji-mainTemp');
+        console.log(emoji)
         const weatherInfo = document.querySelector('.weatherInfo');
+        const unit = document.querySelector('.active') //Celsius or Fareinhit
         const temp = document.querySelector('.average');
-        const max = document.querySelector('.max')
-        const min = document.querySelector('.min')
-        console.log(max)
-        console.log(min)
-        console.log(ma, mi)
-        max.textContent = '↑' + ConvertintoC(ma);
-        min.textContent = '↓' + ConvertintoC(mi);
-        [emoji.src, weatherInfo.textContent] = Emoji(icon)
+        const max = document.querySelector('.max');
+        const min = document.querySelector('.min');
+        [emoji.src, weatherInfo.textContent] = Emoji(icon);
         emoji.height = 160
         emoji.width = 150
         //Now let the DOM get their corresponding value
         City.textContent = address.charAt(0).toUpperCase() + address.slice(1)
         day.textContent = date
-        temp.textContent = ConvertintoC(tempFeels)
+        if (unit.textContent === 'C') {
+            temp.textContent = ConvertintoC(tempFeels)
+            max.textContent = '↑' + ConvertintoC(ma);
+            min.textContent = '↓' + ConvertintoC(mi);
+        } else if (unit.textContent === 'F') {
+            temp.textContent = tempFeels
+            max.textContent = '↑' + ma;
+            min.textContent = '↓' + mi;
+        }
         document.querySelector('.main-section').style.borderColor = 'skyblue'
     };
 
@@ -45,7 +50,11 @@ const DOM = (function () {
         dayName.textContent = format(new Date(date), 'EEEE').substring(0, 3).toUpperCase()
         let str;
         [weather.src, str] = Emoji(weat)
-        temp.textContent = ConvertintoC(temperature)
+        weather.height = 30
+        weather.width = 40
+        const unit = document.querySelector('.active');
+        if (unit.textContent === 'C') temp.textContent = ConvertintoC(temperature)
+        else temp.textContent = temperature
         document.querySelector('.footer').style.borderColor = 'blue'
     }
 
@@ -70,7 +79,7 @@ function Emoji(icon) {
 
 function ConvertintoC(temp) {
     let x = Number(temp)
-    return parseInt((x - 32) / 1.8)
+    return ((x - 32) / 1.8).toFixed(1)
 }
 
 export {

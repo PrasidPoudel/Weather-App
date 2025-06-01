@@ -20,7 +20,6 @@ const DOM = (function () {
         const City = document.querySelector('.city-name'); // City Info is here
         const day = document.querySelector('.day'); // Day Info is here
         const emoji = document.querySelector('.emoji-mainTemp');
-        console.log(emoji)
         const weatherInfo = document.querySelector('.weatherInfo');
         const unit = document.querySelector('.active') //Celsius or Fareinhit
         const temp = document.querySelector('.average');

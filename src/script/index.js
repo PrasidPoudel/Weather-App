@@ -21,8 +21,8 @@ units.forEach((unit) => {
 })
 
 SearchButton.addEventListener('click', (event) => {
-    document.querySelector('.main-section').style.display='none'
-    document.querySelector('.footer').style.display='none'
+    document.querySelector('.main-section').style.display = 'none'
+    document.querySelector('.footer').style.display = 'none'
 
     event.preventDefault()
     footer.style.display = 'none'
@@ -32,15 +32,14 @@ SearchButton.addEventListener('click', (event) => {
     GetData(SearchBar.value).then((res) => {
         console.log(res)
         loader.style.display = 'none'
-        DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.currentConditions.icon, res.days[0].temp, res.currentConditions.feelslike, res.days[0].tempmin)
+        DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.currentConditions.icon, res.currentConditions.temp, res.days[0].tempmax, res.days[0].tempmin)
         for (let i = 1; i <= 6; i++) {
             let array = res.days[i]
             DOM.WeekDOM(array.icon, array.datetime, array.feelslike, i)
         }
         units.forEach((unit) => {
             unit.addEventListener('click', () => {
-                console.log(unit)
-                DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.currentConditions.icon, res.currentConditions.feelslike, res.days[0].tempmax, res.days[0].tempmin)
+                DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.currentConditions.icon, res.currentConditions.temp, res.days[0].tempmax, res.days[0].tempmin)
                 for (let i = 1; i <= 6; i++) {
                     let array = res.days[i]
                     DOM.WeekDOM(array.icon, array.datetime, array.feelslike, i)
@@ -65,11 +64,11 @@ async function GetData(Place) {
 
 function ErrorHandling() {
     const dialogbox = document.querySelector('dialog')
-    const close=document.querySelector('.close')
+    const close = document.querySelector('.close')
     dialogbox.style.display = 'flex'
     dialogbox.style.height = '40vh'
     dialogbox.style.width = '50vh'
-    dialogbox.style.position='absolute'
+    dialogbox.style.position = 'absolute'
     dialogbox.style.justifyContent = 'center'
     dialogbox.style.alignItems = 'center'
     dialogbox.style.fontSize = '4rem'
@@ -79,10 +78,10 @@ function ErrorHandling() {
     dialogbox.showModal()
     const WholeBody = document.querySelector('body')
     WholeBody.style.opacity = '0.1'
-    close.addEventListener('click',()=>{
+    close.addEventListener('click', () => {
         dialogbox.close()
-        dialogbox.style='none'
-        WholeBody.style.opacity='1'
+        dialogbox.style = 'none'
+        WholeBody.style.opacity = '1'
     })
 }
 /**

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="top-container">
+        <form class="example">
+            <input type="text" placeholder="City Name" name="search" id="searchbox">
+            <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <div class="unit">
+        <div class="C unit-child active">C</div>
+        <div class="F unit-child">F</div>
+    </div>
+    <div class="loader"></div>
+    <dialog class="error">
+        <div class="close">❌</div>
+        <div>Error: Location Not Found</div>
+    </dialog>
+    <div class="main-section" style="display: none;">
+        <div class="section1 section">
+            <div class="city-name"></div>
+            <div class="day"></div>
+            <div class="date"></div>
+        </div>
+        <div class="section2 section">
+            <img class="emoji-mainTemp">
+            <div class="weatherInfo"></div>
+        </div>
+        <div class="section3 section">
+            <div class="max-min-container">
+                <div class="max"></div>
+                <div class="min"></div>
+            </div>
+            <div class="average"></div>
+        </div>
+    </div>
+    <div class="footer" style="display: none;">
+        <div class="footer-1">
+            <div class="day1"></div>
+            <img class="weather1">
+            <div class="temp1"></div>
+        </div>
+        <div class="footer-2">
+            <div class="day2"></div>
+            <img class="weather2">
+            <div class="temp2"></div>
+        </div>
+        <div class="footer-3">
+            <div class="day3"></div>
+            <img class="weather3">
+            <div class="temp3"></div>
+        </div>
+        <div class="footer-4">
+            <div class="day4"></div>
+            <img class="weather4">
+            <div class="temp4"></div>
+        </div>
+        <div class="footer-5">
+            <div class="day5"></div>
+            <img class="weather5">
+            <div class="temp5"></div>
+        </div>
+        <div class="footer-6">
+            <div class="day6"></div>
+            <img class="weather6">
+            <div class="temp6"></div>
+        </div>
+
+    </div>
+</body>
+
+</html>

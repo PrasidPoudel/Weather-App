@@ -14,6 +14,8 @@ const sections = document.querySelectorAll('.section')
 const footer = document.querySelector('.footer')
 const DOM = (function () {
     function MainSection(address, date, icon, tempFeels, ma, mi) {
+        document.querySelector('.main-section').style.display = 'flex'
+        document.querySelector('.footer').style.display = 'flex'
         sections.forEach((section) => section.style.display = 'flex')
         const City = document.querySelector('.city-name'); // City Info is here
         const day = document.querySelector('.day'); // Day Info is here
@@ -55,7 +57,6 @@ const DOM = (function () {
         const unit = document.querySelector('.active');
         if (unit.textContent === 'C') temp.textContent = ConvertintoC(temperature)
         else temp.textContent = temperature
-        document.querySelector('.footer').style.borderColor = 'blue'
     }
 
     return {

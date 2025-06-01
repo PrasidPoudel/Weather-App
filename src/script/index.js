@@ -21,8 +21,10 @@ units.forEach((unit) => {
 })
 
 SearchButton.addEventListener('click', (event) => {
+    document.querySelector('.main-section').style.display='none'
+    document.querySelector('.footer').style.display='none'
+
     event.preventDefault()
-    sections.forEach((section) => section.style.display = 'none')
     footer.style.display = 'none'
     document.querySelector('.main-section').style.borderColor = 'transparent'
     loader.style.display = 'block'
@@ -38,7 +40,7 @@ SearchButton.addEventListener('click', (event) => {
         units.forEach((unit) => {
             unit.addEventListener('click', () => {
                 console.log(unit)
-                DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.days[0].icon,res.currentConditions.feelslike, res.days[0].tempmax, res.days[0].tempmin)
+                DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.days[0].icon, res.currentConditions.feelslike, res.days[0].tempmax, res.days[0].tempmin)
                 for (let i = 1; i <= 6; i++) {
                     let array = res.days[i]
                     DOM.WeekDOM(array.icon, array.datetime, array.feelslike, i)
@@ -46,7 +48,9 @@ SearchButton.addEventListener('click', (event) => {
             })
         })
 
-    }).catch((error) => alert(error))
+    }).catch((error) => {
+        ErrorHandling()
+    })
 })
 
 
@@ -58,3 +62,38 @@ async function GetData(Place) {
     })
     return await Response.json()
 }
+
+function ErrorHandling() {
+    const dialogbox = document.querySelector('dialog')
+    const close=document.querySelector('.close')
+    dialogbox.style.display = 'flex'
+    dialogbox.style.height = '40vh'
+    dialogbox.style.width = '50vh'
+    dialogbox.style.position='absolute'
+    dialogbox.style.justifyContent = 'center'
+    dialogbox.style.alignItems = 'center'
+    dialogbox.style.fontSize = '4rem'
+    dialogbox.style.padding = '10px'
+    dialogbox.style.borderRadius = '20px'
+    dialogbox.style.backgroundColor = '#d32f2f'
+    dialogbox.showModal()
+    const WholeBody = document.querySelector('body')
+    WholeBody.style.opacity = '0.1'
+    close.addEventListener('click',()=>{
+        dialogbox.close()
+        dialogbox.style='none'
+        WholeBody.style.opacity='1'
+    })
+}
+/**
+ * .error{
+  display: flex;
+  height: 50vh;
+  width: 50vh;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  border-radius: 30px;
+  border: 1px solid;
+}
+ */

@@ -32,7 +32,7 @@ SearchButton.addEventListener('click', (event) => {
     GetData(SearchBar.value).then((res) => {
         console.log(res)
         loader.style.display = 'none'
-        DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.days[0].icon, res.days[0].temp, res.currentConditions.feelslike, res.days[0].tempmin)
+        DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.currentConditions.icon, res.days[0].temp, res.currentConditions.feelslike, res.days[0].tempmin)
         for (let i = 1; i <= 6; i++) {
             let array = res.days[i]
             DOM.WeekDOM(array.icon, array.datetime, array.feelslike, i)
@@ -40,7 +40,7 @@ SearchButton.addEventListener('click', (event) => {
         units.forEach((unit) => {
             unit.addEventListener('click', () => {
                 console.log(unit)
-                DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.days[0].icon, res.currentConditions.feelslike, res.days[0].tempmax, res.days[0].tempmin)
+                DOM.MainSection(res.address, format(new Date(), 'EEEE'), res.currentConditions.icon, res.currentConditions.feelslike, res.days[0].tempmax, res.days[0].tempmin)
                 for (let i = 1; i <= 6; i++) {
                     let array = res.days[i]
                     DOM.WeekDOM(array.icon, array.datetime, array.feelslike, i)

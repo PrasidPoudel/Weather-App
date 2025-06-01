@@ -3,5 +3,5 @@ Welcome to my Weather App! This is a simple yet functional application that disp
 
 🚀 Live Preview
 Check out the live version of the app here:
-🔗 Weather App Live
+🔗 <a href="https://prasidpoudel.github.io/Weather-App/">Weather App</a>
 
